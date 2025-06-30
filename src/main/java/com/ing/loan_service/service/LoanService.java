@@ -12,7 +12,6 @@ import com.ing.loan_service.model.LoanInstallment;
 import com.ing.loan_service.repository.CustomerRepository;
 import com.ing.loan_service.repository.LoanInstallmentRepository;
 import com.ing.loan_service.repository.LoanRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,14 +26,15 @@ import java.util.List;
 @Service
 public class LoanService {
 
-    @Autowired
-    private LoanRepository loanRepository;
+    private final LoanRepository loanRepository;
+    private final CustomerRepository customerRepository;
+    private final LoanInstallmentRepository installmentRepository;
 
-    @Autowired
-    private CustomerRepository customerRepository;
-
-    @Autowired
-    private LoanInstallmentRepository installmentRepository;
+    public LoanService(LoanRepository loanRepository, CustomerRepository customerRepository, LoanInstallmentRepository installmentRepository) {
+        this.loanRepository = loanRepository;
+        this.customerRepository = customerRepository;
+        this.installmentRepository = installmentRepository;
+    }
 
     @Transactional
     public LoanResponse createLoan(CreateLoanRequest request) {

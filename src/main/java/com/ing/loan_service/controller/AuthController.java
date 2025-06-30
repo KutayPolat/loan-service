@@ -4,7 +4,6 @@ import com.ing.loan_service.config.JwtTokenUtil;
 import com.ing.loan_service.dto.JwtRequest;
 import com.ing.loan_service.dto.JwtResponse;
 import com.ing.loan_service.service.UserDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
