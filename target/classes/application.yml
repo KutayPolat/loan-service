@@ -1,1 +1,36 @@
-spring.application.name=loan-service
+spring:
+  application:
+    name: loan-service
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    open-in-view: false  # Disable open-in-view to avoid lazy loading issues
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+jwt:
+  secret: mySecretKey
+  expiration: 18000
+
+logging:
+  level:
+    com.ing.loan_service: INFO
+    org.springframework.security: INFO
